@@ -151,7 +151,7 @@
     .then(function(releases){if(!Array.isArray(releases))return;
       var assets=releases.filter(function(rel){return !rel.draft && !rel.prerelease;}).reduce(function(all,rel){return all.concat(rel.assets||[]);},[]);
       var pc=assets.find(function(asset){return /^Posto13\.exe$/i.test(asset.name);});
-      var android=assets.find(function(asset){return /^Posto13\.apk$/i.test(asset.name);});
+      var android=assets.find(function(asset){return /^Posto13(?:[-_ ]Android)?\.apk$/i.test(asset.name);});
       if(pc)enableDownload('pc',pc);
       if(android)enableDownload('android',android);
     }).catch(function(){ /* Permanece sinalizado como pendente sem links quebrados. */ });
