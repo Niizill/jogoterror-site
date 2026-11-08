@@ -9,8 +9,8 @@ O executável do jogo tem cerca de 310 MiB, acima do limite de 100 MiB por arqui
 1. Altere a visibilidade deste repositório para Public em Settings > General > Danger Zone > Change repository visibility, depois de conferir que não há código ou materiais confidenciais.
 2. Entre em Releases > Draft a new release.
 3. Crie uma tag, por exemplo, v1.0.0, e anexe o arquivo Posto13.exe em Attach binaries (GitHub Releases aceita arquivos individuais de até 2 GiB).
-4. Publique a release. Quando o GitHub disponibilizá-la publicamente, o site ativa automaticamente o botão do Windows ao localizar exatamente Posto13.exe.
-5. Quando houver Android, anexe Posto13.apk à mesma release (se for a última) ou a uma nova release publicada.
+4. Publique a release. Quando o GitHub disponibilizá-la publicamente, o site pesquisa as 10 releases públicas mais recentes e ativa automaticamente o botão do Windows ao localizar exatamente Posto13.exe.
+5. Quando houver Android, anexe Posto13.apk à mesma release ou a uma release posterior. O site mantém ambos os botões disponíveis se os arquivos estiverem em qualquer uma das 10 releases públicas mais recentes.
 
 Repositórios privados não fornecem downloads anônimos. Para manter o repositório privado, publique os arquivos em um host público separado e altere o HTML para esse URL.
 
