@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#08090b">
+  <meta name="description" content="POSTO 13. Um jogo independente de terror e sobrevivência em um posto de gasolina isolado. Conheça o jogo e acompanhe os downloads para PC e Android.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="POSTO 13 — Seu turno não vai terminar">
+  <meta property="og:description" content="Quando as luzes se apagam, alguma coisa desperta. Conheça POSTO 13, um jogo de terror e sobrevivência.">
+  <meta property="og:image" content="https://images.pexels.com/photos/92077/pexels-photo-92077.jpeg">
+  <title>POSTO 13 | O último turno</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#08090b;--ink:#f3f0ea;--muted:#a7a6a4;--red:#ba1b2d;--red-bright:#ed3146;--line:#39383a;--paper:#e9e5dd;--font-head:'Barlow Condensed',Impact,'Arial Narrow',sans-serif;--font-body:'DM Sans',Arial,sans-serif}
+    *,*::before,*::after{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-body);overflow-x:hidden}body.menu-open{overflow:hidden}a{color:inherit;text-decoration:none}button{font:inherit}::selection{background:var(--red);color:white}button,a{-webkit-tap-highlight-color:transparent}button:focus-visible,a:focus-visible,summary:focus-visible{outline:2px solid #ff7884;outline-offset:5px}
+    .noise{pointer-events:none;position:fixed;inset:0;z-index:70;opacity:.12;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.3'/%3E%3C/svg%3E");mix-blend-mode:screen}
+    .wrap{width:min(1280px,calc(100% - 100px));margin-inline:auto}.kicker{display:inline-flex;align-items:center;gap:11px;font-size:11px;line-height:1.3;font-weight:800;letter-spacing:.25em;text-transform:uppercase}.kicker::before{content:"";width:25px;height:2px;background:var(--red-bright)}.accent{color:var(--red-bright)}
+    .site-header{height:76px;position:absolute;inset:0 0 auto;z-index:90;display:flex;align-items:center;justify-content:space-between;padding:0 5%;border-bottom:1px solid rgba(255,255,255,.15);background:linear-gradient(180deg,rgba(4,5,8,.9),rgba(4,5,8,.18))}
+    .brand{display:inline-flex;align-items:center;gap:12px;font-family:var(--font-head);font-size:28px;font-weight:900;letter-spacing:.02em;line-height:1}.brand-symbol{position:relative;display:inline-grid;place-items:center;width:36px;height:36px;color:#fff;font:900 24px var(--font-head);transform:skewX(-10deg);border:3px solid var(--red-bright);clip-path:polygon(0 0,100% 0,100% 80%,80% 100%,0 100%)}
+    .desktop-nav{display:flex;align-items:center;gap:33px}.desktop-nav a:not(.nav-cta){font-size:11px;font-weight:800;letter-spacing:.17em;text-transform:uppercase;color:#dbd8d7;transition:color .2s}.desktop-nav a:not(.nav-cta):hover{color:var(--red-bright)}.nav-cta{display:inline-flex;align-items:center;gap:12px;background:var(--red);min-height:43px;padding:0 23px;font-weight:800;font-size:11px;letter-spacing:.13em;text-transform:uppercase;clip-path:polygon(0 0,100% 0,100% 78%,93% 100%,0 100%);transition:background .2s}.nav-cta:hover,.btn-red:hover{background:#e0253b}.hamburger{display:none;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid #555;background:transparent;color:white;cursor:pointer}.hamburger svg{width:22px}
+    .hero{position:relative;min-height:790px;height:100svh;max-height:1030px;display:flex;align-items:center;isolation:isolate;overflow:hidden;background:#090b0e}
+    .hero-photo{position:absolute;z-index:-5;inset:0;background-image:linear-gradient(90deg,#08090bf7 0%,#08090be3 23%,rgba(8,9,11,.6) 50%,rgba(8,9,11,.21) 76%),linear-gradient(0deg,#08090b 3%,transparent 32%,rgba(2,4,6,.38) 95%),url('https://images.pexels.com/photos/92077/pexels-photo-92077.jpeg?auto=compress&cs=tinysrgb&w=2200');background-size:cover;background-position:center 42%;filter:saturate(.58) contrast(1.15)}
+    .hero-photo::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 70% 48%,rgba(176,23,35,.26),transparent 32%),linear-gradient(100deg,rgba(4,5,6,.3),transparent 62%)}
+    .hero-grid{position:absolute;inset:0;pointer-events:none;z-index:-3;background:repeating-linear-gradient(90deg,transparent 0,transparent calc(25% - 1px),rgba(255,255,255,.06) calc(25% - 1px),rgba(255,255,255,.06) 25%);opacity:.23}
+    .hero-content{position:relative;padding-top:84px;padding-bottom:110px}.hero-issue{color:#d9d1cc;letter-spacing:.35em;font-size:11px;font-weight:800;display:flex;gap:14px;align-items:center;margin-bottom:22px}.status-dot{width:7px;height:7px;border-radius:100%;background:var(--red-bright);box-shadow:0 0 0 5px rgba(237,49,70,.13)}
+    h1,h2,h3,p{margin-top:0}.hero h1{position:relative;margin:0 0 7px -6px;max-width:900px;font:900 clamp(115px,17vw,260px)/.71 var(--font-head);letter-spacing:-.038em;text-transform:uppercase;text-shadow:0 4px 28px rgba(0,0,0,.4)}
+    .hero h1 span{color:var(--red-bright)}.hero-subtitle{font:800 clamp(26px,4vw,50px)/1 var(--font-head);letter-spacing:.03em;text-transform:uppercase;margin:24px 0 18px}.hero-desc{max-width:440px;color:#c9c6c3;line-height:1.8;font-size:14px;margin-bottom:27px}
+    .buttons{display:flex;gap:14px;align-items:center;flex-wrap:wrap}.btn{position:relative;display:inline-flex;justify-content:center;align-items:center;gap:13px;min-height:57px;padding:0 30px;font-weight:800;font-size:12px;letter-spacing:.13em;text-transform:uppercase;border:1px solid transparent;cursor:pointer;transition:background .2s,border-color .2s,color .2s,transform .2s;clip-path:polygon(0 0,100% 0,100% 77%,94% 100%,0 100%)}.btn:hover{transform:translateY(-2px)}.btn svg{width:17px;height:17px;flex:none}.btn-red{background:var(--red);color:white}.btn-outline{background:rgba(5,6,8,.38);color:white;border-color:#a1a0a0}.btn-outline:hover{background:rgba(255,255,255,.1)}.btn-inert,.btn-inert:hover{cursor:not-allowed;opacity:.47;transform:none}.hero-bottom{position:absolute;bottom:0;left:0;right:0;height:73px;border-top:1px solid rgba(255,255,255,.13);display:flex;align-items:center;justify-content:space-between;padding:0 5%;color:#c4c1bd}.micro{font-weight:700;font-size:10px;letter-spacing:.18em;text-transform:uppercase}.hero-scroll{display:inline-flex;align-items:center;gap:18px}.scroll-line{height:33px;width:1px;background:var(--red-bright);opacity:.9;animation:grow 2.2s ease-in-out infinite}.coordinates{font-family:monospace;font-size:10px;letter-spacing:.12em;color:#a39a99}
+    .marquee{background:var(--red);overflow:hidden;transform:skewY(-1.8deg);margin:-20px 0 0;z-index:5;position:relative;padding:14px 0}.marquee-track{white-space:nowrap;display:flex;gap:48px;animation:marquee 26s linear infinite;font:900 24px var(--font-head);letter-spacing:.17em;text-transform:uppercase}.marquee-track span{display:flex;gap:48px;align-items:center}.marquee-track b{font-size:11px}
+    .section{padding:125px 0}.section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:50px}.section-heading{font:900 clamp(56px,8vw,116px)/.87 var(--font-head);text-transform:uppercase;letter-spacing:-.018em;margin:17px 0 0}.section-heading .stroke{-webkit-text-stroke:1px #86817d;color:transparent}.section-lead{font-size:14px;line-height:1.85;color:#b2aeaa;max-width:370px;margin-bottom:4px}.about{background:#101113;position:relative;overflow:hidden}.about::before{content:'13';pointer-events:none;position:absolute;right:-.07em;top:-.17em;color:rgba(255,255,255,.018);font:900 540px var(--font-head);line-height:1}
+    .about-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:70px;align-items:center}.photo-frame{aspect-ratio:1.18;position:relative;min-height:390px;background:#101416;overflow:hidden}.photo-frame::before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(4,7,9,.87),transparent 60%),linear-gradient(90deg,rgba(13,14,15,.2),rgba(13,14,15,.4)),url('https://images.pexels.com/photos/92077/pexels-photo-92077.jpeg?auto=compress&cs=tinysrgb&w=1100') center 55%/cover;filter:contrast(1.08) saturate(.6);transform:scale(1.04);transition:transform 1.2s}.photo-frame:hover::before{transform:scale(1.13)}.photo-frame::after{content:"";position:absolute;inset:0;border:1px solid rgba(255,255,255,.16);pointer-events:none}.photo-corner{position:absolute;top:0;left:0;width:5px;height:72px;background:var(--red-bright)}.photo-caption{position:absolute;z-index:1;left:27px;bottom:27px;color:#f5eeee;font-weight:800;font-size:10px;letter-spacing:.19em;text-transform:uppercase}.photo-caption::before{content:'●';color:var(--red-bright);margin-right:9px}
+    .story{position:relative;z-index:1}.story h2{font:900 clamp(57px,6.8vw,100px)/.89 var(--font-head);text-transform:uppercase;margin:20px 0 29px}.story h2 em{font-style:normal;color:var(--red-bright)}.story p{color:#b7b4b0;line-height:1.95;font-size:14px;max-width:430px}.story-quote{border-left:3px solid var(--red);margin:35px 0;padding:0 0 0 20px;font:700 22px/1.25 var(--font-head);text-transform:uppercase;letter-spacing:.03em;color:#f2ede8}.story-details{display:flex;gap:35px;flex-wrap:wrap;margin-top:39px}.story-detail small{display:block;font-size:10px;letter-spacing:.2em;color:#9c9592;text-transform:uppercase;margin-bottom:6px;font-weight:700}.story-detail strong{font:800 22px var(--font-head);text-transform:uppercase}
+    .features{background:var(--paper);color:#131417;position:relative}.features .kicker{color:#8e1724}.features .section-lead{color:#666360}.features .section-heading .stroke{-webkit-text-stroke:1px #918d89}.features-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.feature{position:relative;min-height:350px;background:#16181b;color:#f8f6f1;padding:30px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;transition:transform .2s}.feature:hover{transform:translateY(-5px)}.feature:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 17%,rgba(174,25,43,.33),transparent 53%),linear-gradient(0deg,rgba(0,0,0,.75),transparent 75%);opacity:1}.feature:nth-child(2){background:#242324}.feature:nth-child(2)::before{background:radial-gradient(circle at 30% 15%,rgba(230,217,182,.17),transparent 42%),linear-gradient(0deg,rgba(0,0,0,.76),transparent 80%)}.feature:nth-child(3){background:#211619}.feature:nth-child(3)::before{background:radial-gradient(circle at 76% 20%,rgba(186,27,45,.43),transparent 45%),linear-gradient(0deg,rgba(0,0,0,.8),transparent 77%)}.feature-number{position:absolute;top:8px;right:22px;font:900 134px/.9 var(--font-head);color:rgba(255,255,255,.06)}.feature-icon{position:absolute;left:31px;top:31px;color:var(--red-bright)}.feature-icon svg{width:38px;height:38px}.feature h3{position:relative;margin:0 0 12px;font:900 39px/.94 var(--font-head);text-transform:uppercase}.feature p{position:relative;color:#bdb8b5;max-width:260px;font-size:12px;line-height:1.7;margin:0}
+    .download{background:#08090b;position:relative;overflow:hidden}.download::before{content:"";position:absolute;width:510px;height:510px;border:1px solid rgba(255,255,255,.065);border-radius:50%;right:-155px;top:90px;box-shadow:0 0 0 100px rgba(255,255,255,.015),0 0 0 200px rgba(255,255,255,.01)}.download .section-head{position:relative}.download-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:19px;position:relative}.download-card{border:1px solid #3b3d42;background:#121315;padding:38px;min-height:340px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}.download-card::after{content:"";width:100px;height:100px;position:absolute;right:-55px;bottom:-55px;transform:rotate(45deg);background:var(--red)}.download-card:hover{border-color:#777075}.download-platform{display:flex;align-items:center;gap:13px;color:#c8c3c1;font-size:10px;letter-spacing:.19em;text-transform:uppercase;font-weight:800}.download-platform svg{height:29px;width:29px}.download-card h3{font:900 clamp(40px,5vw,65px)/.9 var(--font-head);text-transform:uppercase;margin:28px 0 8px}.download-card p{color:#aba7a4;font-size:13px;line-height:1.75;max-width:300px}.download-status{display:inline-flex;align-items:center;gap:9px;color:#f2cfce;font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:800}.download-status::before{content:"";width:6px;height:6px;border-radius:50%;background:#d0a15c}.download-status.ready{color:#cbe5c7}.download-status.ready::before{background:#76c26b}.download-action{width:fit-content;margin-top:26px}.download-note{color:#827f7d;font-size:12px;line-height:1.7;margin-top:30px;max-width:750px}.download-note a{color:#e7e0dc;text-decoration:underline;text-underline-offset:4px}
+    .faq{background:#111214;padding-top:80px;padding-bottom:115px}.faq-wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:80px}.faq h2{font:900 70px/.88 var(--font-head);text-transform:uppercase;margin-top:20px}.faq-list{border-top:1px solid #3e3c3b}.faq-list details{border-bottom:1px solid #3e3c3b;padding:23px 0}.faq-list summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:20px;cursor:pointer;font-weight:800;font-size:13px}.faq-list summary::-webkit-details-marker{display:none}.faq-list summary::after{content:"+";color:var(--red-bright);font:500 28px var(--font-head)}.faq-list details[open] summary::after{content:"−"}.faq-list p{color:#b5aeab;font-size:13px;line-height:1.85;max-width:550px;margin:14px 0 0}
+    footer{background:#090a0c;border-top:1px solid #29292a;padding:37px 0}.footer-row{display:flex;justify-content:space-between;align-items:center;gap:30px}.footer-note{font-size:11px;color:#88827f;line-height:1.7;max-width:600px}.footer-links{display:flex;align-items:center;gap:22px}.footer-links a{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#bfb9b5}.footer-links a:hover{color:white}
+    .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}.reveal.visible{opacity:1;transform:translateY(0)}
+    @keyframes marquee{to{transform:translateX(-50%)}}@keyframes grow{50%{transform:scaleY(.3);transform-origin:top}}
+    @media(min-width:1550px){.hero-photo{background-position:center 48%}}
+    @media(max-width:900px){.wrap{width:min(100% - 44px,680px)}.site-header{padding:0 22px}.desktop-nav{display:none}.hamburger{display:flex}.mobile-menu{position:absolute;top:76px;left:0;right:0;padding:24px 22px 28px;background:#0c0d10;border-bottom:1px solid #4d3235;display:none;flex-direction:column;gap:0;box-shadow:0 20px 40px #0008}.mobile-menu.open{display:flex}.mobile-menu a{display:block;padding:17px 7px;font:800 20px var(--font-head);letter-spacing:.09em;text-transform:uppercase;border-bottom:1px solid #303033}.mobile-menu a:last-child{color:#f05666}.hero{min-height:760px;max-height:950px}.hero h1{font-size:clamp(118px,24vw,205px)}.hero-photo{background-position:55% center;background-image:linear-gradient(90deg,#08090bed,rgba(8,9,11,.52) 90%),linear-gradient(0deg,#08090b 0%,transparent 55%),url('https://images.pexels.com/photos/92077/pexels-photo-92077.jpeg?auto=compress&cs=tinysrgb&w=1400')}.section{padding:90px 0}.about-grid{grid-template-columns:1fr;gap:50px}.photo-frame{min-height:320px}.story{grid-row:1}.features-grid{grid-template-columns:1fr}.feature{min-height:280px}.feature h3{font-size:41px}.faq-wrap{grid-template-columns:1fr;gap:22px}.faq h2{font-size:55px}}
+    @media(max-width:600px){.hero{min-height:720px;height:94svh}.hero-content{padding-top:100px;padding-bottom:55px}.hero h1{font-size:clamp(112px,28vw,160px)}.hero-subtitle{font-size:30px;margin-top:22px}.hero-desc{font-size:13px;max-width:340px}.hero-bottom{height:59px;padding:0 22px}.coordinates{display:none}.section-head{display:block}.section-heading{font-size:67px}.section-lead{margin-top:22px}.download-grid{grid-template-columns:1fr}.download-card{min-height:300px;padding:27px}.download-card h3{font-size:58px}.buttons .btn{padding:0 20px;min-height:54px;font-size:10px}.btn{min-height:52px}.story h2{font-size:68px}.story-details{gap:24px}.photo-frame{min-height:270px}.footer-row{align-items:flex-start;flex-direction:column;gap:23px}.footer-links{gap:20px}.faq h2{font-size:57px}.marquee-track{font-size:19px}.section{padding:80px 0}.faq{padding-bottom:80px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+  </style>
+</head>
+<body>
+<div class="noise" aria-hidden="true"></div>
+<header class="site-header">
+  <a class="brand" href="#inicio" aria-label="Posto 13 — início"><span class="brand-symbol">13</span><span>POSTO <span class="accent">13</span></span></a>
+  <nav class="desktop-nav" aria-label="Navegação principal">
+    <a href="#historia">A história</a><a href="#experiencia">O jogo</a><a href="#perguntas">Perguntas</a><a class="nav-cta" href="#download">Baixar o jogo <span aria-hidden="true">↗</span></a>
+  </nav>
+  <button class="hamburger" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Navegação para celular"><a href="#historia">A história</a><a href="#experiencia">O jogo</a><a href="#perguntas">Perguntas</a><a href="#download">Baixar o jogo ↗</a></nav>
+</header>
+<main>
+  <section class="hero" id="inicio" aria-labelledby="hero-title">
+    <div class="hero-photo" aria-hidden="true"></div><div class="hero-grid" aria-hidden="true"></div>
+    <div class="wrap hero-content">
+      <p class="hero-issue"><span class="status-dot"></span> TERROR & SOBREVIVÊNCIA <span aria-hidden="true">/</span> JOGO INDEPENDENTE</p>
+      <h1 id="hero-title">POSTO<span>13</span></h1>
+      <p class="hero-subtitle">O SEU TURNO <span class="accent">NÃO VAI TERMINAR.</span></p>
+      <p class="hero-desc">No fim de uma estrada esquecida, existe um posto onde a noite nunca parece acabar. As luzes vão falhar. O silêncio vai mudar. E você não está sozinho.</p>
+      <div class="buttons"><a class="btn btn-red" href="#download"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m-5-5 5 5 5-5M4 17v4h16v-4"/></svg> VER DOWNLOADS <span aria-hidden="true">↗</span></a><a class="btn btn-outline" href="#historia">CONHEÇA O JOGO <span aria-hidden="true">↘</span></a></div>
+    </div>
+    <div class="hero-bottom"><div class="micro hero-scroll"><span class="scroll-line"></span> DESÇA PARA EXPLORAR</div><div class="coordinates">00:13 AM / ÚLTIMO TURNO</div><div class="micro">01 — 04</div></div>
+  </section>
+  <div class="marquee" aria-hidden="true"><div class="marquee-track"><span>QUANDO A LUZ ACABA <b>✦</b> O MEDO COMEÇA <b>✦</b> NÃO OLHE PARA TRÁS <b>✦</b> POSTO 13 <b>✦</b></span><span>QUANDO A LUZ ACABA <b>✦</b> O MEDO COMEÇA <b>✦</b> NÃO OLHE PARA TRÁS <b>✦</b> POSTO 13 <b>✦</b></span></div></div>
+  <section class="section about" id="historia">
+    <div class="wrap about-grid">
+      <div class="photo-frame reveal" role="img" aria-label="Imagem atmosférica ilustrativa de um posto de gasolina durante a noite"><div class="photo-corner"></div><div class="photo-caption">REGISTRO 013 / LOCAL DESCONHECIDO</div></div>
+      <div class="story reveal"><span class="kicker">A HISTÓRIA</span><h2>NÃO É<br>APENAS UM<br><em>POSTO.</em></h2><p>Era para ser apenas mais uma noite comum. Um posto de gasolina isolado, uma estrada vazia e um turno que parecia não ter fim.</p><p>Mas alguma coisa se move no escuro. Para sobreviver, você vai precisar explorar o ambiente, encontrar recursos e tomar decisões antes que seja tarde.</p><blockquote class="story-quote">“Se você ouvir alguma coisa lá fora... não vá olhar.”</blockquote><div class="story-details"><div class="story-detail"><small>Gênero</small><strong>Terror / Sobrevivência</strong></div><div class="story-detail"><small>Ambientação</small><strong>Posto isolado</strong></div></div></div>
+    </div>
+  </section>
+  <section class="section features" id="experiencia">
+    <div class="wrap">
+      <div class="section-head reveal"><div><span class="kicker">A EXPERIÊNCIA</span><h2 class="section-heading">CADA SOM.<br><span class="stroke">UMA AMEAÇA.</span></h2></div><p class="section-lead">Nem tudo que você escuta tem explicação. E nem tudo que você encontra quer ser encontrado.</p></div>
+      <div class="features-grid">
+        <article class="feature reveal"><div class="feature-number" aria-hidden="true">01</div><div class="feature-icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2"><circle cx="20" cy="20" r="8"/><path d="M20 3v7m0 20v7M3 20h7m20 0h7M8 8l5 5m14 14 5 5M32 8l-5 5M13 27l-5 5"/></svg></div><h3>APAGUE AS<br>CERTEZAS.</h3><p>Uma lanterna pode ser a única coisa entre você e a escuridão.</p></article>
+        <article class="feature reveal"><div class="feature-number" aria-hidden="true">02</div><div class="feature-icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 29V10l14-7 14 7v19l-14 8zM6 10l14 7 14-7M20 17v20"/><path d="M10 27l6 3"/></svg></div><h3>EXPLORE O<br>DESCONHECIDO.</h3><p>Procure itens, investigue o posto e descubra como manter as coisas funcionando.</p></article>
+        <article class="feature reveal"><div class="feature-number" aria-hidden="true">03</div><div class="feature-icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 20s5-11 15-11 15 11 15 11-5 11-15 11S5 20 5 20Z"/><circle cx="20" cy="20" r="5"/><path d="M20 2v4M20 34v4"/></svg></div><h3>NÃO CONFIE<br>NO SILÊNCIO.</h3><p>Você pode não ver o que está por perto. Mas isso não significa que não esteja lá.</p></article>
+      </div>
+    </div>
+  </section>
+  <section class="section download" id="download">
+    <div class="wrap">
+      <div class="section-head reveal"><div><span class="kicker">ESCOLHA SUA PLATAFORMA</span><h2 class="section-heading">PRONTO PARA<br><span class="accent">ENTRAR?</span></h2></div><p class="section-lead">Os downloads aparecem aqui quando as versões do jogo forem publicadas oficialmente.</p></div>
+      <div class="download-grid">
+        <article class="download-card reveal">
+          <div><div class="download-platform"><svg viewBox="0 0 32 32" fill="currentColor"><path d="M2 5 14 3v12H2zm14-2L30 1v14H16zM2 17h12v12L2 27zm14 0h14v14l-14-2z"/></svg> COMPUTADOR</div><h3>WINDOWS<br><span class="accent">PC</span></h3><p>A versão de computador do POSTO 13. O download será liberado assim que o arquivo for publicado.</p><span class="download-status" id="pc-status" aria-live="polite">Aguardando publicação</span></div>
+          <a class="btn btn-red btn-inert download-action" id="pc-download" aria-disabled="true" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m-5-5 5 5 5-5M4 17v4h16v-4"/></svg><span id="pc-label">AGUARDANDO DOWNLOAD</span></a>
+        </article>
+        <article class="download-card reveal">
+          <div><div class="download-platform"><svg viewBox="0 0 32 32" fill="currentColor"><path d="M9 4 6 0l1.5-.8L11 3a18 18 0 0 1 10 0l3.5-3.8L26 0l-3 4c4.5 2.5 5.5 6.5 5.5 8.5h-25C3.5 10.5 4.5 6.5 9 4Zm.5 3a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Zm13 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3ZM4 15h24v11a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3Zm-3 1h2v10H1Zm28 0h2v10h-2Z"/></svg> CELULAR</div><h3>ANDROID<br><span class="accent">APK</span></h3><p>Estamos preparando o espaço para a versão Android. Acompanhe por aqui a disponibilidade.</p><span class="download-status" id="android-status" aria-live="polite">Em breve</span></div>
+          <a class="btn btn-outline btn-inert download-action" id="android-download" aria-disabled="true" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m-5-5 5 5 5-5M4 17v4h16v-4"/></svg><span id="android-label">EM BREVE</span></a>
+        </article>
+      </div>
+      <p class="download-note">Aviso: os arquivos serão disponibilizados somente por links oficiais. Ao instalar no PC ou celular, verifique o nome do arquivo e baixe apenas de fontes confiáveis. O jogo e a versão Android podem passar por atualizações.</p>
+    </div>
+  </section>
+  <section class="section faq" id="perguntas">
+    <div class="wrap faq-wrap">
+      <div class="reveal"><span class="kicker">PERGUNTAS FREQUENTES</span><h2>TUDO O QUE<br>VOCÊ PRECISA<br><span class="accent">SABER.</span></h2></div>
+      <div class="faq-list reveal">
+        <details><summary>O jogo está disponível para Windows?</summary><p>O arquivo da versão de PC está em preparação para publicação. Assim que for disponibilizado oficialmente, o botão de download será ativado nesta página.</p></details>
+        <details><summary>Quando vai sair para Android?</summary><p>A versão Android ainda não tem uma data anunciada. O botão será ativado quando o APK oficial for publicado.</p></details>
+        <details><summary>Preciso de internet para jogar?</summary><p>Os requisitos de conexão dependem do modo de jogo e serão confirmados junto com a versão publicada.</p></details>
+        <details><summary>Quais são os requisitos mínimos?</summary><p>Os requisitos oficiais ainda não foram divulgados. Verifique as informações da versão antes de baixar e instalar.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap footer-row"><div><a class="brand" href="#inicio"><span class="brand-symbol">13</span><span>POSTO <span class="accent">13</span></span></a><p class="footer-note">© <span id="year">2026</span> POSTO 13. Projeto independente. Imagens de ambientação ilustrativas, não representam necessariamente cenas do jogo. Fotografia: Markus Spiske / Pexels.</p></div><div class="footer-links"><a href="#inicio">Início</a><a href="#download">Downloads</a><a href="https://github.com/Niizill/jogoterror-site" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div></div></footer>
+<script>
+(function(){
+  'use strict';
+  document.getElementById('year').textContent = String(new Date().getFullYear());
+  var toggle=document.getElementById('menu-toggle');
+  var menu=document.getElementById('mobile-menu');
+  function closeMenu(){menu.classList.remove('open');toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','Abrir menu');document.body.classList.remove('menu-open');}
+  toggle.addEventListener('click',function(){var opening=!menu.classList.contains('open');menu.classList.toggle('open',opening);toggle.setAttribute('aria-expanded',String(opening));toggle.setAttribute('aria-label',opening?'Fechar menu':'Abrir menu');document.body.classList.toggle('menu-open',opening);});
+  menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeMenu);});
+  window.addEventListener('keydown',function(e){if(e.key==='Escape')closeMenu();});
+  var seen=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var obs=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('visible');obs.unobserve(entry.target);}});},{threshold:.12});
+    seen.forEach(function(el){obs.observe(el);});
+  }else{seen.forEach(function(el){el.classList.add('visible');});}
+  function enableDownload(platform,asset){
+    var link=document.getElementById(platform+'-download');
+    var status=document.getElementById(platform+'-status');
+    var label=document.getElementById(platform+'-label');
+    link.href=asset.browser_download_url;
+    link.setAttribute('aria-disabled','false');
+    link.removeAttribute('tabindex');
+    link.classList.remove('btn-inert');
+    link.setAttribute('download',asset.name);
+    status.classList.add('ready');
+    status.textContent='Download disponível';
+    label.textContent=platform==='pc'?'BAIXAR PARA WINDOWS':'BAIXAR APK';
+  }
+  // Ativa os downloads automaticamente quando uma Release PUBLICA do repositorio
+  // incluir Posto13.exe e/ou Posto13.apk. Para baixar anonimamente,
+  // o repositorio e a release precisam estar publicos.
+  fetch('https://api.github.com/repos/Niizill/jogoterror-site/releases/latest',{headers:{Accept:'application/vnd.github+json'}})
+    .then(function(res){return res.ok?res.json():null;})
+    .then(function(release){if(!release||!Array.isArray(release.assets))return;
+      var pc=release.assets.find(function(asset){return /^Posto13\.exe$/i.test(asset.name);});
+      var android=release.assets.find(function(asset){return /^Posto13\.apk$/i.test(asset.name);});
+      if(pc)enableDownload('pc',pc);
+      if(android)enableDownload('android',android);
+    }).catch(function(){ /* Permanece sinalizado como pendente sem links quebrados. */ });
+})();
+</script>
+</body>
+</html>
