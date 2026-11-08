@@ -17,6 +17,7 @@
   <style>
     :root{--bg:#08090b;--ink:#f3f0ea;--muted:#a7a6a4;--red:#ba1b2d;--red-bright:#ed3146;--line:#39383a;--paper:#e9e5dd;--font-head:'Barlow Condensed',Impact,'Arial Narrow',sans-serif;--font-body:'DM Sans',Arial,sans-serif}
     *,*::before,*::after{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-body);overflow-x:hidden}body.menu-open{overflow:hidden}a{color:inherit;text-decoration:none}button{font:inherit}::selection{background:var(--red);color:white}button,a{-webkit-tap-highlight-color:transparent}button:focus-visible,a:focus-visible,summary:focus-visible{outline:2px solid #ff7884;outline-offset:5px}
+    .mobile-menu{display:none}
     .noise{pointer-events:none;position:fixed;inset:0;z-index:70;opacity:.12;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.3'/%3E%3C/svg%3E");mix-blend-mode:screen}
     .wrap{width:min(1280px,calc(100% - 100px));margin-inline:auto}.kicker{display:inline-flex;align-items:center;gap:11px;font-size:11px;line-height:1.3;font-weight:800;letter-spacing:.25em;text-transform:uppercase}.kicker::before{content:"";width:25px;height:2px;background:var(--red-bright)}.accent{color:var(--red-bright)}
     .site-header{height:76px;position:absolute;inset:0 0 auto;z-index:90;display:flex;align-items:center;justify-content:space-between;padding:0 5%;border-bottom:1px solid rgba(255,255,255,.15);background:linear-gradient(180deg,rgba(4,5,8,.9),rgba(4,5,8,.18))}
@@ -145,11 +146,12 @@
   // Ativa os downloads automaticamente quando uma Release PUBLICA do repositorio
   // incluir Posto13.exe e/ou Posto13.apk. Para baixar anonimamente,
   // o repositorio e a release precisam estar publicos.
-  fetch('https://api.github.com/repos/Niizill/jogoterror-site/releases/latest',{headers:{Accept:'application/vnd.github+json'}})
+  fetch('https://api.github.com/repos/Niizill/jogoterror-site/releases?per_page=10',{headers:{Accept:'application/vnd.github+json'}})
     .then(function(res){return res.ok?res.json():null;})
-    .then(function(release){if(!release||!Array.isArray(release.assets))return;
-      var pc=release.assets.find(function(asset){return /^Posto13\.exe$/i.test(asset.name);});
-      var android=release.assets.find(function(asset){return /^Posto13\.apk$/i.test(asset.name);});
+    .then(function(releases){if(!Array.isArray(releases))return;
+      var assets=releases.filter(function(rel){return !rel.draft && !rel.prerelease;}).reduce(function(all,rel){return all.concat(rel.assets||[]);},[]);
+      var pc=assets.find(function(asset){return /^Posto13\.exe$/i.test(asset.name);});
+      var android=assets.find(function(asset){return /^Posto13\.apk$/i.test(asset.name);});
       if(pc)enableDownload('pc',pc);
       if(android)enableDownload('android',android);
     }).catch(function(){ /* Permanece sinalizado como pendente sem links quebrados. */ });
