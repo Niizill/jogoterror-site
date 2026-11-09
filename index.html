@@ -191,8 +191,8 @@
     label.textContent=platform==='pc'?'BAIXAR WINDOWS':'BAIXAR ANDROID APK';
   }
   function assetForPlatform(assets,platform){
-    if(platform==='android') return assets.find(function(a){return /^Posto[ _.-]*13.*\\.apk$/i.test(a.name)||/\\.apk$/i.test(a.name) && /posto.?13/i.test(a.name);});
-    return assets.find(function(a){return /^Posto[ _.-]*13.*\\.(exe|zip)$/i.test(a.name)&&!/android/i.test(a.name);});
+    if(platform==='android') return assets.find(function(a){return /^Posto[ _.-]*13.*\.apk$/i.test(a.name)||/\.apk$/i.test(a.name) && /posto.?13/i.test(a.name);});
+    return assets.find(function(a){return /^Posto[ _.-]*13.*\.(exe|zip)$/i.test(a.name)&&!/android/i.test(a.name);});
   }
   // Seleciona a Release pública mais recente PARA CADA PLATAFORMA.
   // Atualizações são publicadas em github.com/Niizill/jogoterror-site/releases.
@@ -200,8 +200,8 @@
     .then(function(res){if(!res.ok)throw Error('Falha ao consultar versões');return res.json();})
     .then(function(releases){
       if(!Array.isArray(releases))throw Error('Resposta inválida');
-      releases.filter(function(r){return !r.draft&&!r.prerelease;})
-      .sort(function(a,b){return new Date(b.published_at)-new Date(a.published_at);});
+      releases=releases.filter(function(r){return !r.draft&&!r.prerelease;})
+        .sort(function(a,b){return new Date(b.published_at)-new Date(a.published_at);});
       ['pc','android'].forEach(function(platform){
         for(var i=0;i<releases.length;i++){
           var release=releases[i];
