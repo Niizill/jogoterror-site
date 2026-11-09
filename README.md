@@ -1,26 +1,42 @@
 # POSTO 13 — site oficial
 
-Landing page de terror/sobrevivência para o jogo POSTO 13. Layout estático responsivo (HTML, CSS, JS) pronto para Vercel.
+Site estático e responsivo do jogo de terror **POSTO 13**, criado por **NILTWON**, hospedado na Vercel e conectado ao repositório `Niizill/jogoterror-site`.
 
-## Publicar downloads
+O conteúdo público descreve apenas recursos informados pelo criador: terror 3D em Godot, exploração do posto de gasolina, monstro, lanterna, inventário de quatro espaços e multiplayer online de até quatro jogadores. A galeria usa capturas da intro 3D e referências do monstro enviadas pelo criador (não fotos de banco de imagens).
 
-O executável do jogo tem cerca de 310 MiB, acima do limite de 100 MiB por arquivo comum no GitHub. Não inclua o .exe diretamente nos commits.
+## Como publicar uma nova versão do jogo
 
-1. Altere a visibilidade deste repositório para Public em Settings > General > Danger Zone > Change repository visibility, depois de conferir que não há código ou materiais confidenciais.
-2. Entre em Releases > Draft a new release.
-3. Crie uma tag, por exemplo, v1.0.0, e anexe o arquivo Posto13.exe em Attach binaries (GitHub Releases aceita arquivos individuais de até 2 GiB).
-4. Publique a release. Quando o GitHub disponibilizá-la publicamente, o site pesquisa as 10 releases públicas mais recentes e ativa automaticamente o botão do Windows ao localizar exatamente Posto13.exe.
-5. Quando houver Android, anexe Posto13.apk à mesma release ou a uma release posterior. O site mantém ambos os botões disponíveis se os arquivos estiverem em qualquer uma das 10 releases públicas mais recentes.
+**Versão publicada e verificada durante a atualização deste site:** `v1.0.0`, com arquivos `Posto13.exe` (Windows) e `Posto13-Android.apk` (Android).
 
-Repositórios privados não fornecem downloads anônimos. Para manter o repositório privado, publique os arquivos em um host público separado e altere o HTML para esse URL.
+Para lançar uma versão nova, por exemplo **v1.0.1**:
 
-## Vercel
+1. Exporte a nova versão no Godot e teste no Windows e no Android.
+2. Para Windows, compacte em `Posto13-Windows.zip` caso a exportação tenha arquivos auxiliares como `.pck`. Se o executável for realmente autossuficiente, você também pode publicar `Posto13.exe`.
+3. Para Android, exporte `Posto13-Android.apk` com o **mesmo package ID e certificado de assinatura** da versão anterior para permitir atualização sem desinstalar.
+4. Acesse **https://github.com/Niizill/jogoterror-site/releases/new**.
+5. Escolha **Choose a tag → v1.0.1 → Create new tag**, dê um nome à atualização e descreva as mudanças reais.
+6. Arraste o novo arquivo de Windows e o novo APK para o campo de anexos da Release, aguarde terminar e clique em **Publish release**. Não marque como `draft` ou `pre-release` se deseja disponibilizá-la no site.
+7. Pronto: a página de downloads do site consulta as Releases públicas e escolhe **o arquivo mais recente de cada plataforma**. Não precisa editar o HTML a cada atualização.
 
-Conecte este repositório à Vercel com Framework Preset: Other e Root Directory: .
-Não há npm nem build. A configuração vercel.json adiciona alguns cabeçalhos de segurança.
+**Se atualizar só o Windows ou só o Android**, o site mantém o arquivo mais recente disponível da outra plataforma. O site não substitui os arquivos do jogo nem atualiza instalações automaticamente: o jogador precisa baixar e instalar a nova versão.
 
-## Imagem de ambientação
+Não envie arquivos do jogo enormes como commits comuns: use os **assets das GitHub Releases**, que aceitam arquivos grandes.
 
-Fotografia por Markus Spiske / Pexels, https://www.pexels.com/photo/lights-night-dark-gas-92077/ . É uma foto ilustrativa, não uma screenshot do jogo.
+## Como atualizar a galeria
 
-Arquivos: index.html, favicon.svg, vercel.json.
+A imagem compactada `assets/galeria/posto13-cenas.svg` contém quatro capturas/referências reais organizadas em uma grade 2 × 2 (duas da intro e duas do modelo do monstro). O site reutiliza as quatro regiões para reduzir peso e armazenamento. Para trocar as imagens, atualize esse recurso preservando a grade 2 × 2.
+
+A página identifica separadamente o que é captura da intro e o que é referência do modelo.
+
+## Publicação na Vercel
+
+O projeto usa HTML, CSS e JavaScript, sem build, com configuração em `vercel.json`. A branch principal é `main`. Alterações enviadas ao GitHub normalmente iniciam uma nova publicação no projeto Vercel conectado. Se uma alteração não aparecer, consulte **Vercel → jogoterror-site → Deployments** e confirme a integração.
+
+## Arquivos do site
+
+- `index.html`: layout, galeria, FAQ e busca de versões nas GitHub Releases
+- `assets/galeria/posto13-cenas.svg`: galeria otimizada com imagens reais do projeto
+- `favicon.svg`: ícone
+- `vercel.json`: configurações e headers
+
+Os links de download oficiais vêm de https://github.com/Niizill/jogoterror-site/releases.
